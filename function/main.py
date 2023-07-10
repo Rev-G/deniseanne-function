@@ -1,4 +1,5 @@
-import functions_framework
+from flask import escape, abort
+import functions_framework, json
 
 @functions_framework.http
 def hello_get(request):
@@ -15,4 +16,22 @@ def hello_get(request):
         Functions, see the `Writing HTTP functions` page.
         <https://cloud.google.com/functions/docs/writing/http#http_frameworks>
     """
-    return "Hello World!"
+    
+    if request.method == "HEAD":
+        print("HEAD shot")
+        return "head shot ;-)"
+    elif request.method == "POST":
+        content_type = request.headers.get('content-type')
+
+        if content_type == None:
+            print("WARNING: no content type defined")
+        else:
+            if content_type == "application/x-www-form-urlencoded":
+                da_event = request.form.get("event")
+                print(f"DATA: {da_event}")
+            else:
+                print(f"WARNING: Unknown content type: {content_type}")
+
+        return "deniseanne.com cart function"
+    else:
+        return abort(405)
