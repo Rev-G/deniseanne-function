@@ -19,6 +19,8 @@ https://cloud.google.com/functions/docs/create-deploy-gcloud#functions_quickstar
 
 https://cloud.google.com/functions/docs/samples/functions-helloworld-http#functions_helloworld_http-python
 
+https://pypi.org/project/functions-framework/
+
 https://support.thrivecart.com/help/using-webhook-notifications/
 
 https://webhook.site/
