@@ -1,6 +1,7 @@
 ##Custom stuff
 .DS_Store
 *.http
+*data*.json
 
 ##Python Stuff
 # Byte-compiled / optimized / DLL files

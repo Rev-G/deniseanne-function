@@ -26,12 +26,22 @@ def hello_get(request):
         if content_type == None:
             print("WARNING: no content type defined")
         else:
-            if content_type == "application/x-www-form-urlencoded":
-                da_event = request.form.get("event")
+            if content_type == "application/json":
+                request_json = request.get_json(silent=True)
+                if request_json and "thrivecart_secret" in request_json:
+                    da_secret = request_json["thrivecart_secret"]
+                    if da_secret != "WEMBRUUKE43N":
+                        raise ValueError("ERROR: request not from da")
+                else:
+                    raise ValueError("ERROR: JSON is invalid, or missing a property")
+                    #print("JSON is invalid, or missing a property")
+                
+                da_event = request_json["event"]
                 print(f"DATA: {da_event}")
+
             else:
                 print(f"WARNING: Unknown content type: {content_type}")
 
-        return "deniseanne.com cart function"
+        return "deniseanne.com success"
     else:
         return abort(405)
