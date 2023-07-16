@@ -2,7 +2,7 @@ from flask import escape, abort
 import functions_framework, json
 
 @functions_framework.http
-def hello_get(request):
+def da_cart(request):
     """HTTP Cloud Function.
     Args:
         request (flask.Request): The request object.
