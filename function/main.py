@@ -30,7 +30,7 @@ def hello_get(request):
                 request_json = request.get_json(silent=True)
                 if request_json and "thrivecart_secret" in request_json:
                     da_secret = request_json["thrivecart_secret"]
-                    if da_secret != "WEMBRUUKE43N":
+                    if da_secret != "TESTSECRET":
                         raise ValueError("ERROR: request not from da")
                 else:
                     raise ValueError("ERROR: JSON is invalid, or missing a property")
