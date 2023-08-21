@@ -2,6 +2,18 @@
 
 deniseanne.com google cloud function
 
+## API's to enable
+
+Need to enable the following api's
+
+- Cloud Functions
+- Cloud Build
+- Artifact Registry
+- Cloud Run
+- Logging
+- Secret Manager
+- Cloud Build
+
 ## setup
 
 `python3 -m venv env`
@@ -18,6 +30,11 @@ or
 
 ## deploy
 
+create a new deployment service account and create a key with the following roles
+
+- Cloud Functions Developer
+
+
 `/Users/gary/mycode/google-cloud-sdk/bin/gcloud init`
 
 should change the "python-http-function" to a different name
@@ -33,6 +50,12 @@ should change the "python-http-function" to a different name
 --allow-unauthenticated
 ```
 
+Using cloud build??
+
+<!-- gcloud builds submit --region=us-east1 --config CONFIG_FILE_PATH SOURCE_DIRECTORY -->
+`cd /Users/gary/mycode/Rev-G/deniseanne-function/function`
+`gcloud builds submit --region=us-east1 --config cloudbuild.yml .`
+
 ## remove
 
 `/Users/gary/mycode/google-cloud-sdk/bin/gcloud functions delete python-http-function --gen2 --region us-east1`
@@ -40,6 +63,10 @@ should change the "python-http-function" to a different name
 ## local test
 
 `functions-framework --target da_cart --debug`
+
+## logout 
+
+`gcloud auth revoke --all`
 
 https://cloud.google.com/functions/docs/create-deploy-gcloud#functions_quickstart_helloworld-python
 
