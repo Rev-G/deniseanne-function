@@ -12,7 +12,6 @@ Need to enable the following api's
 - Cloud Run
 - Logging
 - Secret Manager
-- Cloud Build
 
 ## setup
 
